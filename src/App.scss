@@ -303,3 +303,11 @@ $tablet: 768px;
    border-radius:10px ;
    margin:10px 0;
 }
+
+
+// Add Category And Brand upload photo 
+#upload-photo{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}

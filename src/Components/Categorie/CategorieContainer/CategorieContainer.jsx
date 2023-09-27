@@ -1,25 +1,27 @@
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Spinner } from 'react-bootstrap'
 import CategorieCard from '../../Categorie/CategorieCard/CategorieCard'
-import item from "../../../assets/images/clothe.png";
-import item1 from "../../../assets/images/labtop.png";
-import item2 from "../../../assets/images/laptops.png";
-const CategorieContainer = () => {
+const CategorieContainer = ({data,loading}) => {
+
+    
+    const colors = ["#FFD3E8", "#F4DBA5", "#55CFDF", "#FF6262", "#0034FF", "#FFD3E8"]
+
     return (
         <Container>
             <h4 className="my-2">All Categories</h4>
             <Row className="my-2 justify-content-around d-flex">
-                <CategorieCard title="Phone" background="#f6f6f6" img={item} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item1} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item2} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item1} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item2} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item1} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item2} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item1} />
-                <CategorieCard title="Phone" background="#f6f6f6" img={item2} />
+
+                {
+                    loading === false ?
+                        data ? (
+                            data.map((item, index) => {
+                                return (
+                                    <CategorieCard key={index} title={item.name} background={colors[Math.floor(Math.random() * 5) + 1]} img={item.image} />
+                                )
+                        })
+                    ) : (<h4>There Is no Categories</h4>)
+                        : <Spinner animation="border" variant="primary" />
+                }
+                
             </Row>
         </Container>
     )

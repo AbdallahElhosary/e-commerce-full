@@ -1,13 +1,12 @@
 import ReactPaginate from 'react-paginate';
 import "./Pagination.scss";
-function Paginate() {
+function Paginate({ pageCount,onPress }) {
     
 
     // Functions to Change the Page Form Pagination
     const handlePageClick = (data) => {
-        
+        onPress(data.selected + 1)
     }
-    const pageCount = 500;
     return (
         <ReactPaginate
             breakLabel="..."

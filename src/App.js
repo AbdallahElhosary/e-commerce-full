@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.scss"
 import 'aos/dist/aos.css';
 import HomePage from './Pages/HomePage';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavbarLogin from './Components/uttilies/Navbar/NavbarLogin';
 import Footer from './Components/uttilies/Footer/Footer';
 import LoginPage from './Pages/Auth/Login/LoginPage';
@@ -31,6 +31,8 @@ import UserEditAdderss from './Components/User/UserEditAdderss';
 function App() {
   return (
     <div className="App">
+      <BrowserRouter >
+
       <NavbarLogin />
       <Routes >
         <Route index element={<HomePage />} />
@@ -42,7 +44,7 @@ function App() {
         <Route path="/products/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order/paymethoud" element={<PaymentPage />} />
-        <Route path='admin' element={<AdminPage />} >
+          <Route path="admin/*" element={<AdminPage />} >
           <Route index element={<AdminAllProductsItems />} />
           <Route path="allorders" element={<AdminAllOrdersCom />} />
           <Route path="addbrand" element={<AdminAddBrandCom />} />
@@ -51,7 +53,7 @@ function App() {
           <Route path="addproduct" element={<AdminAddProductCom />} />
           <Route path="order/23" element={<AdminOrderDetails />} />
         </Route>
-        <Route path='user' element={<UserPage />} >
+        <Route path='user/*' element={<UserPage />} >
           <Route index element={<UserAllProductCom />} />
           <Route path="favorite" element={<UserFavorite />} />
           <Route path="addresses" element={<UserAdresses />} />
@@ -59,8 +61,10 @@ function App() {
           <Route path="add-address" element={<UserAddAddress />} />
           <Route path="edit-address" element={<UserEditAdderss />} />
         </Route>
-      </Routes>
+        </Routes>
       <Footer />
+      </BrowserRouter>
+
     </div>
   );
 }
