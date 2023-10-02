@@ -33,7 +33,7 @@ const AdminAddCategoriyCom = () => {
             />
           </div>
           <FloatingLabel controlId="floatingPassword" label="Categoriy Name" className="my-3">
-            <Form.Control type="text" placeholder="Categoriy Name" onChange={(e)=> setName(e.target.value)} value={name}/>
+            <Form.Control type="text" placeholder="Categoriy Name" onChange={(e)=>{e.persist();setName(e.target.value)}} value={name}/>
           </FloatingLabel>
         </Col>
       </Row>

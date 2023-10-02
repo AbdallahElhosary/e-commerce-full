@@ -1,26 +1,31 @@
 import React from 'react'
 import "./Brand.css"
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Spinner } from 'react-bootstrap'
 import SubTitle from '../uttilies/subTitle/SubTitle'
 import BrandCard from './BrandCard'
-import com1 from "../../assets/images/brand1.png"
-import com2 from "../../assets/images/brand2.png"
-import com3 from "../../assets/images/brand3.png"
+import HomeBrandHook from '../../hook/brand/home-brand-hook'
 
 
 
-const BrandFeatured = ({title , btnTitle }) => {
+const BrandFeatured = ({ title, btnTitle }) => {
+  
+  const [brand, loading] = HomeBrandHook();
   return (
     <Container>
             <SubTitle title={title} btntitle={btnTitle} pathText="/allbrand" />
-            <Row className="my-1 justify-content-around d-flex">
-                <BrandCard img={ com1} />
-                <BrandCard img={ com2} />
-                <BrandCard img={ com3} />
-                <BrandCard img={ com1} />
-                <BrandCard img={ com2} />
-                <BrandCard img={ com3} />
+      <Row className="my-1 justify-content-around d-flex">
+        
+        {
+          loading === false ? brand.data ? (
+            brand.data.slice(0, 5).map((item,index) => {
+              return (
+                <BrandCard key={index}  img={item.image} />
 
+              )
+            })
+          ) : (<h4>There Is no Categories</h4>)
+            : <Spinner animation="border" variant="primary" />
+        }
             </Row>
     </Container>
   )
