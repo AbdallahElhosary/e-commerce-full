@@ -1,35 +1,14 @@
-import React, { useState } from 'react'
-import { Row, Col, FloatingLabel, Form } from 'react-bootstrap'
-import avatar from '../../assets/images/avatar.png'
-import { createCategory } from "../../redux/actions/categoryAction";
-import { useDispatch } from "react-redux";
-
+import { Row, Col, FloatingLabel, Form, Spinner } from 'react-bootstrap'
+import 'react-toastify/dist/ReactToastify.css';
+import { MdCloudDone } from "react-icons/md"
+import {FaTimesCircle} from "react-icons/fa"
+import { ToastContainer } from 'react-toastify';
+import AddCategoryHook from '../../hook/category/add-category-hook';
 const AdminAddCategoriyCom = () => {
-  const dispatch = useDispatch();
 
-  // The state which contains the image
-  const [img, setImg] = useState(avatar);
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const [name, setName] = useState('');
-
-
-  // When image changed
-  const onImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setImg(URL.createObjectURL(e.target.files[0]));
-      setSelectedFile(e.target.files[0]);
-    }
-  }
-  // Handle Submit Function
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("image", selectedFile);
-    dispatch(createCategory(formData));
-    
-  }
+  // get the variables from the add category hook function
+  const [img, name, res, setName, onImageChange, handleSubmit, loading, isPress] = AddCategoryHook();
+  
   return (
     <div>
       <Row className="justify-content-start ">
@@ -40,7 +19,7 @@ const AdminAddCategoriyCom = () => {
             <label htmlFor="upload-photo">
               <img
                 src={img}
-                alt="fzx"
+                alt="category-item"
                 height="150px"
                 width="150px"
                 style={{ cursor: "pointer" }}
@@ -63,6 +42,22 @@ const AdminAddCategoriyCom = () => {
           <button className="my-2 btn btn-dark"  onClick={handleSubmit}>Save Edit</button>
         </Col>
       </Row>
+      
+      {
+        isPress ? loading ? <Spinner animation="border" role="status"></Spinner> : res.status === 201 ?<MdCloudDone className='fs-2 text-success'/>:<FaTimesCircle className='fs-2 text-danger'/> : null
+      }
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }

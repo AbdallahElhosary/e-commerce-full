@@ -2,20 +2,10 @@ import React from 'react'
 import { Container, Row, Spinner } from 'react-bootstrap'
 import SubTitle from '../../uttilies/subTitle/SubTitle'
 import CategorieCard from '../../Categorie/CategorieCard/CategorieCard'
-import { useSelector, useDispatch } from 'react-redux'
-import { getAllCaetgory } from '../../../redux/actions/categoryAction';
-import { useEffect } from "react";
+import HomeCategoryHook from '../../../hook/category/home-category-hook'
 const HomeCategorie = () => {
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllCaetgory());
-
-  }, [])
-  const category = useSelector(state => state.allCategory.category);
-  const loading = useSelector(state => state.allCategory.loading);
-  const colors = ["#FFD3E8", "#F4DBA5", "#55CFDF", "#FF6262", "#0034FF", "#FFD3E8"]
-
+  const [category, loading, colors] = HomeCategoryHook();
   return (
     <Container>
       <SubTitle title="Categories" btntitle="More" pathText="/allcategorie" />

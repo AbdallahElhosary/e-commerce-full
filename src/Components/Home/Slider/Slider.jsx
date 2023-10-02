@@ -4,74 +4,83 @@ import "./Slider.css";
 import slider4 from "../../../assets/images/prod1.png"
 import sliderimg from "../../../assets/images/prod3.png"
 import prod3 from "../../../assets/images/prod4.png"
+import { Navigation, Pagination, Scrollbar, A11y,Autoplay } from 'swiper/modules';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Slider = () => {
-    const [index, setIndex] = useState(0)
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex)
-    }
+
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-            <Carousel.Item className="slider-background">
-                <div className="d-flex flex-row justify-content-center align-items-center">
-                    <img
-                        style={{ height: "296px", width: "313.53px" }}
-                        className=""
-                        src={slider4}
-                        alt="First slide"
-                    />
-                    <div className="caption">
-                        <h3 className="slider-title">Great Discount !</h3>
-                        <p className="slider-text">Up to 50% off your purchase</p>
+        <Swiper
+            modules={[Autoplay,Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+            loop={true}
+            pagination={{ clickable: true }}
+        >
+            <SwiperSlide>
+                <div className=" slider-background">
+                    <div className="swiper-item d-flex flex-row justify-content-center align-items-center">
+                        <img
+                            className=""
+                            src={sliderimg}
+                            alt="First slide"
+                        />
+                        <div className="caption">
+                            <h3 className="slider-title">Great Discount !</h3>
+                            <p className="slider-text">Up to 50% off your purchase</p>
+                        </div>
                     </div>
                 </div>
-            </Carousel.Item>
-            <Carousel.Item className="slider-background2">
-                <div className="d-flex flex-row justify-content-center align-items-center">
-                    <img
-                        style={{ height: "296px", width: "313.53px" }}
-                        className=""
-                        src={sliderimg}
-                        alt="First slide"
-                    />
-                    <div className="caption">
-                        <h3 className="slider-title">Great Discount !</h3>
-                        <p className="slider-text">Up to 50% off your purchase</p>
+            </SwiperSlide>
+            
+            <SwiperSlide>
+                <div className=" slider-background">
+                    <div className="swiper-item d-flex flex-row justify-content-center align-items-center">
+                        <img
+                            className=""
+                            src={slider4}
+                            alt="First slide"
+                        />
+                        <div className="caption">
+                            <h3 className="slider-title">Great Discount !</h3>
+                            <p className="slider-text">Up to 50% off your purchase</p>
+                        </div>
                     </div>
                 </div>
-            </Carousel.Item>
 
-            <Carousel.Item className="slider-background3">
-                <div className="d-flex flex-row justify-content-center align-items-center">
-                    <img
-                        style={{ height: "296px", width: "373.53px" }}
-                        className=""
-                        src={prod3}
-                        alt="First slide"
-                    />
-                    <div className="caption">
-                        <h3 className="slider-title">Great Discount !</h3>
-                        <p className="slider-text">Up to 50% off your purchase</p>
+                
+            </SwiperSlide>
+            <SwiperSlide>
+                <div className=" slider-background">
+                    <div className="swiper-item d-flex flex-row justify-content-center align-items-center">
+                        <img
+                            className=""
+                            src={prod3}
+                            alt="First slide"
+                        />
+                        <div className="caption">
+                            <h3 className="slider-title">Great Discount !</h3>
+                            <p className="slider-text">Up to 50% off your purchase</p>
+                        </div>
                     </div>
                 </div>
-            </Carousel.Item>
 
-            <Carousel.Item className="slider-background4">
-                <div className="d-flex flex-row justify-content-center align-items-center">
-                    <img
-                        style={{ height: "296px", width: "373.53px" }}
-                        className=""
-                        src={prod3}
-                        alt="First slide"
-                    />
-                    <div className="caption">
-                        <h3 className="slider-title">Great Discount !</h3>
-                        <p className="slider-text">Up to 50% off your purchase</p>
-                    </div>
-                </div>
-            </Carousel.Item>
-        </Carousel>
+                
+            </SwiperSlide>
+
+        </Swiper>
     )
 }
 
