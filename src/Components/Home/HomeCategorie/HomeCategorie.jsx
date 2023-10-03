@@ -12,7 +12,7 @@ const HomeCategorie = () => {
       <Row className="my-2 justify-content-around d-flex">
         {
           loading === false ? category.data ? (
-            category.data.slice(0, 5).map((item,index) => {
+            category.data.slice(0, 6).map((item,index) => {
               return (
                 <CategorieCard key={index} title={item.name} background={colors[Math.floor(Math.random() * 5) + 1]} img={item.image} />
 

@@ -12,5 +12,5 @@ export const useInsertDataImage = async (url, params) => {
 // function to insert data if it hasn't image
 export const useInsertData = async (url, params) => {
     const res = await baseUrl.post(url, params);
-    return res.data;
+    return res;
 }

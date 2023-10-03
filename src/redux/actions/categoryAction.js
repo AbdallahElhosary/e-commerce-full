@@ -33,7 +33,7 @@ export const getAllCaetgoryPage = (page) => async (dispatch) => {
         })
     }
 }
-
+// funciton to create a category
 export const createCategory = (formData) => async (dispatch) => {
     try {
         const response = await useInsertDataImage(`/api/v1/categories`, formData);
