@@ -9,7 +9,7 @@ import LoginPage from './Pages/Auth/Login/LoginPage';
 import Register from './Pages/Auth/Register/Register';
 import CategoriePage from './Pages/CategoriePage/CategoriePage';
 import AllBrand from './Pages/AllBrand/AllBrand';
-import CategorieShop from './Pages/CategorieShop/CategorieShop';
+import ProductsShop from './Pages/ProductsShop/ProductsShop';
 import ProductDetailsPage from './Pages/Products/ProductDetailsPage/ProductDetailsPage';
 import Cart from './Pages/Cart/Cart';
 import PaymentPage from './Pages/PaymentPage/PaymentPage';
@@ -28,7 +28,11 @@ import UserAdresses from './Components/User/UserAdresses';
 import UserProfile from './Components/User/UserProfile';
 import UserAddAddress from './Components/User/UserAddAddress';
 import UserEditAdderss from './Components/User/UserEditAdderss';
+import AdminEditPage from './Components/Admin/AdminEditPage';
+
 function App() {
+
+  
   return (
     <div className="App">
       <BrowserRouter >
@@ -40,7 +44,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/allcategorie" element={<CategoriePage />} />
         <Route path="/allbrand" element={<AllBrand />} />
-        <Route path="/products" element={<CategorieShop />} />
+        <Route path="/products" element={<ProductsShop />} />
         <Route path="/products/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order/paymethoud" element={<PaymentPage />} />
@@ -52,6 +56,8 @@ function App() {
           <Route path="addsubcategory" element={<AdminAddSubCategoriyCom />} />
           <Route path="addproduct" element={<AdminAddProductCom />} />
           <Route path="order/23" element={<AdminOrderDetails />} />
+          <Route path="editProduct/:id" element={<AdminEditPage />} />
+            
         </Route>
         <Route path='user/*' element={<UserPage />} >
           <Route index element={<UserAllProductCom />} />

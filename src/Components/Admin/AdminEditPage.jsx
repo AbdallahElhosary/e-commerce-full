@@ -1,21 +1,24 @@
-import { Row, Col, FloatingLabel, Form, FormControl } from 'react-bootstrap'
-import Multiselect from 'multiselect-react-dropdown';
-import add from '../../assets/images/add.png'
+import React from 'react'
+import { Col, FloatingLabel, Form, FormControl, Row } from 'react-bootstrap';
+import add from "../../assets/images/add.png";
+import { useParams } from 'react-router-dom'
 import MultiImageInput from 'react-multiple-image-input';
+import Multiselect from 'multiselect-react-dropdown';
 import { CompactPicker } from 'react-color';
-
 import { ToastContainer } from 'react-toastify';
 import AddProductHook from '../../hook/products/add-product-hook';
-const AdminAddProductCom = () => {
+import EditProductHook from '../../hook/products/edit-product-hook';
 
-  const [setName, setDescription, setQuantity, setPriceBefore, setShowColor, setPriceAfter, setImages, name, category, description, quantity
-    , priceAfter, priceBefore, images, colors, showColor, options, handleSelectBrand, handleSubmitProducts, onComplete, handleSelectCategory
-    , onSelect, onRemove, brandItem, onRemoveColor] = AddProductHook();
+const AdminEditPage = () => {
+    const { id } = useParams();
 
+    const [brandId, catId, setName, setDescription, setQuantity, setPriceBefore, setShowColor, setPriceAfter, setImages, name, category, description
+        , quantity, priceAfter, priceBefore, images, colors, showColor, options, handleSelectBrand, handleSubmitEdit, onComplete
+        , handleSelectCategory, onSelect, onRemove, brandItem, onRemoveColor] = EditProductHook(id);
   return (
     <div>
       <Row className="justify-content-start ">
-        <h2>Add New Product</h2>
+        <h3>Edit Product-[{name }]</h3>
         <Col sm="8">
           <div className="text-form pb-2">Product Image</div>
           <MultiImageInput
@@ -26,7 +29,7 @@ const AdminAddProductCom = () => {
             theme={'light'}
           />
           <FloatingLabel controlId="floatingPassword" label="Product Name" className="my-3">
-            <Form.Control type="text" placeholder="Product Name" value={name} onChange={(e) => setName(e.target.value)} />
+            <Form.Control type="text"   value={name} onChange={(e) => setName(e.target.value)} />
           </FloatingLabel>
           <FloatingLabel controlId="floatingTextarea2" label="Product Description">
             <Form.Control
@@ -38,7 +41,7 @@ const AdminAddProductCom = () => {
           </FloatingLabel>
           <FormControl type="number" step={1} className='my-2' placeholder="Price" value={priceBefore} onChange={(e) => setPriceBefore(e.target.value)} />
           <FormControl type="number" step={1} className='my-2' placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-          <Form.Select aria-label="Default select example" className='my-2' onChange={handleSelectCategory}>
+          <Form.Select aria-label="Default select example" className='my-2' onChange={handleSelectCategory} value={catId}>
             <option>Main Product</option>
             {
               category.data &&
@@ -60,7 +63,7 @@ const AdminAddProductCom = () => {
             showArrow={true}
             style={{ color: "red" }}
           />
-          <Form.Select aria-label="Default select example" className='my-2' onChange={handleSelectBrand}>
+          <Form.Select aria-label="Default select example" className='my-2' onChange={handleSelectBrand} value={brandId}>
             <option>Brand</option>
             {
               brandItem.data &&
@@ -75,7 +78,7 @@ const AdminAddProductCom = () => {
           <div className="mt-1 d-flex wrap flex-wrap">
 
             {
-              colors.length >= 1 && colors.map((color, index) => {
+              colors && colors.length >= 1 && colors.map((color, index) => {
                 return (
                   <div
                     key={index}
@@ -97,7 +100,7 @@ const AdminAddProductCom = () => {
       </Row>
       <Row>
         <Col sm="8" className="d-flex justify-content-end ">
-          <button className="my-2 btn btn-dark rounded-pill" onClick={handleSubmitProducts}>Save Edit</button>
+          <button className="my-2 btn btn-dark rounded-pill" onClick={handleSubmitEdit}>Save Edit</button>
         </Col>
       </Row>
       <ToastContainer />
@@ -105,4 +108,4 @@ const AdminAddProductCom = () => {
   )
 }
 
-export default AdminAddProductCom
+export default AdminEditPage

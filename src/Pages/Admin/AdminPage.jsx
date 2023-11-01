@@ -8,6 +8,7 @@ import AdminAddCategoriyCom from '../../Components/Admin/AdminAddCategoriyCom'
 import AdminAddSubCategoriyCom from '../../Components/Admin/AdminAddSubCategoriyCom'
 import AdminAddProductCom from '../../Components/Admin/AdminAddProductCom'
 import AdminOrderDetails from '../../Components/Admin/AdminOrderDetails'
+import AdminEditPage from '../../Components/Admin/AdminEditPage'
 
 const AdminPage = () => {
     return (
@@ -25,6 +26,7 @@ const AdminPage = () => {
                         <Route path="/addsubcategory" element={<AdminAddSubCategoriyCom />} />
                         <Route path="/addproduct" element={<AdminAddProductCom />} />
                         <Route path="/order/23" element={<AdminOrderDetails />} />
+                        <Route path="/editProduct/:id" element={<AdminEditPage />} />
                     </Routes>
                 </Col>
             </Row>

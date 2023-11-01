@@ -5,8 +5,6 @@ import AddSubcategoryHook from '../../hook/subCategory/add-subcategory-hook';
 
 const AdminAddSubCategoriyCom = () => {
   const [category, onChangeName, name, handleSelect, handleSubmit] = AddSubcategoryHook();
-  
-  console.log(navigator.cookieEnabled);
   return (
     <div>
       <Row className="justify-content-start ">

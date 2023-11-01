@@ -18,6 +18,8 @@ export const getAllCaetgory = (limit) => async (dispatch) => {
     }
 }
 
+
+
 // Action to get all categories with pagination
 export const getAllCaetgoryPage = (page) => async (dispatch) => {
     try {

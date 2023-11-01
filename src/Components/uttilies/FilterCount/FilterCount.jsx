@@ -3,14 +3,13 @@ import UnopDropdown from 'unop-react-dropdown'
 import sort from "../../../assets/images/sort.png";
 import "./FilterCount.scss";
 
-const FilterCount = () => {
-    const title = "600 Avilable product";
+const FilterCount = ({products}) => {
     const handler = () => {
-        console.log("Hello")
+        // console.log("Hello")
     }
     return (
         <div className="d-flex justify-content-between pt-3 px-2 container">
-            <div className="sub-tile">{title}</div>
+            <div className="sub-tile">{`${products.length} Avilable product`}</div>
             <div className="search-count-text d-flex ">
                 <UnopDropdown
                     onAppear={handler}

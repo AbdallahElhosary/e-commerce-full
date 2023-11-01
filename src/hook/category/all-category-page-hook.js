@@ -7,7 +7,7 @@ const AllCategoryPageHook = () => {
   const dispatch = useDispatch();
 
   // Get All Category with limit
-  useEffect(() => {
+  useEffect( () => {
     dispatch(getAllCaetgory(6));
   }, [])
   // Select Category

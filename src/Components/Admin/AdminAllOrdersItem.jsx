@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap'
-import mobile from '../../../assets/images/mobile.png'
-import deleteicon from '../../../assets/images/delete.png'
+import mobile from '../../assets/images/mobile.png'
+import deleteicon from '../../assets/images/delete.png'
 import { Link } from 'react-router-dom'
 const AdminAllOrdersItem = () => {
     return (

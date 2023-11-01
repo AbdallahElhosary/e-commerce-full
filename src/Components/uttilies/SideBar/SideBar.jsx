@@ -17,14 +17,14 @@ const SideBar = () => {
                     <Form>
                         <Form.Check // prettier-ignore
                             type="checkbox"
-                            id={`default-checkbox`}
+                            id={`Electoric`}
                             label="Electoric"
                         />
                     </Form>
                     <Form>
                         <Form.Check // prettier-ignore
                             type="checkbox"
-                            id={`default-checkbox`}
+                            id={`Clothes`}
                             label="Clothes"
                         />
                     </Form>

@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminAllOrdersItem from './AdminAllOrdersItem/AdminAllOrdersItem'
+import AdminAllOrdersItem from './AdminAllOrdersItem'
 import { Row, Col } from 'react-bootstrap'
 
 const AdminOrderDetails = () => {
