@@ -37,7 +37,6 @@ const AdminAllProductsItems = () => {
           <Paginate pageCount={pageCount} onPress={onPress} />
         ) : null
       }
-      <Paginate />
     </div>
   )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import SubTitle from '../uttilies/subTitle/SubTitle'
 import ProductCard from '../ProductCard/ProductCard'
+import NotAvailable from '../uttilies/NotAvailable'
+import Loading from '../uttilies/Loading'
 
 const CardProductsCon = ({ btnTitle, title, pathText, products }) => {
 
@@ -12,9 +14,9 @@ const CardProductsCon = ({ btnTitle, title, pathText, products }) => {
             <Row className="my-2 justify-content-around d-flex">
                     
                     {
-                        products ? (
+                        products.length > 0 ? (
                             products.map((item, index) => <ProductCard key={index} item={item} />)
-                        ) : <center>There Is No Products</center>
+                        ) : <NotAvailable   />
                     }
 
             </Row>

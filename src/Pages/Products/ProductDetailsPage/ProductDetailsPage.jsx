@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CategorieHeader from "../../../Components/Categorie/CategorieHeader/CategorieHeader";
 import { Container } from 'react-bootstrap';
 import ProductDetails from '../../../Components/ProductDetails/ProductDetails';
@@ -16,31 +16,33 @@ export default function ProductDetailsPage() {
   // Get the route parameter using useParams
   const { id } = useParams();
 
-  // Store the id in local storage when you first obtain it
-  if (id) {
-    localStorage.setItem('id', id);
-  }
-
   // Retrieve the id from local storage, if available
-  const storedId = localStorage.getItem('id');
-  
+  const [, , , , similerProducts] = ViewProductsDetalisHook(id);
 
-  const [products] = ViewHomeProductHook()
-  const [category] = AllCategoryPageHook();
-  const [brand] = AllBrandPageHook();
-
-  const [, , , , similerProducts] = ViewProductsDetalisHook(storedId);
-
+  const [loading,setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    })
+  },[])
 
 
   return (
     <div>
-      <CategorieHeader />
+    {
+      
+      loading === false &&
+    
+        <>
+          <CategorieHeader />
       <Container>
-        <ProductDetails id={storedId}/>
+        <ProductDetails id={id}/>
         <RateContainer />
         <CardProductsCon title="Products you may like"  products={similerProducts} />
       </Container>
+      </>
+    }
+
     </div>
   )
 }

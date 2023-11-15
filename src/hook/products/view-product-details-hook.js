@@ -9,7 +9,6 @@ const ViewProductsDetalisHook = (id) => {
     const [brand] = AllBrandPageHook();
     const [category] = AllCategoryPageHook();
 
-    console.log(brand);
 
     const [oneProduct] = products.filter((product) => product._id === id);
     const similerProducts = products.filter((product) => product.category === oneProduct.category && product._id !== oneProduct._id);

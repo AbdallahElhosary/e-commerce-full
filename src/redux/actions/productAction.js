@@ -110,3 +110,19 @@ export const editProduct = (id, formData) => async (dispatch) => {
         })
     }
 }
+
+// Action to get all products with pagination
+export const getAllProductsSearch = (queryString) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/products?${queryString}`);
+        dispatch({
+            type: GET_ALL_PRODUCTS,
+            payload: response
+        })
+    } catch (e) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Erorr" + e
+        })
+    }
+}
