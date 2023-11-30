@@ -1,70 +1,78 @@
 body {
-    font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
-.light{
-    background-color:white ;
-    color: #27374D;
+
+.light {
+  background-color: white;
+  color: #27374D;
 }
 
 .first {
-    color: #27374D;
+  color: #27374D;
 }
 
 .first-bg {
-    background-color: #27374D;
+  background-color: #27374D;
 }
 
 
 .second {
-    color: #526D82;
+  color: #526D82;
 }
 
 .second-bg {
-    background-color: #526D82;
+  background-color: #526D82;
 }
 
 .third {
-    color: #9DB2BF;
+  color: #9DB2BF;
 }
 
 .third-bg {
-    background-color: #9DB2BF;
+  background-color: #9DB2BF;
 }
 
 
 
 .fourth {
-    color: #DDE6ED;
+  color: #DDE6ED;
 }
 
 .fourth-bg {
-    background-color: #DDE6ED;
+  background-color: #DDE6ED;
 }
 
-img{
+img {
   object-fit: contain;
 }
+
 /* Style */
 body {
   margin: 0;
   font-family: "Almarai", sans-serif;
 }
+
 .m-0 {
   margin: 0;
 }
+
 .p-0 {
   padding: 0;
 }
+
 .font {
   background-color: #f9f9f9;
 }
+
 .hieght-search {
   height: 80vh;
 }
+
 .logo {
   height: 46px;
   width: 50px;
 }
+
 .login-img {
   height: 20px;
   width: 20px;
@@ -90,15 +98,17 @@ body {
   border: 1px solid #979797;
   border-radius: 8px;
 }
+
 .title-login {
   color: #555550;
-  
+
   font-size: 21px;
   font-weight: 800;
   letter-spacing: 0;
   line-height: 28px;
   text-align: right;
 }
+
 .btn-login {
   height: 46px;
   width: 374px;
@@ -107,6 +117,7 @@ body {
   color: white;
   background-color: #272727;
 }
+
 .btn-login:hover {
   color: rgb(206, 204, 204);
 }
@@ -124,9 +135,10 @@ body {
   letter-spacing: 0;
   margin: 5px 0;
 }
+
 .item-delete-edit {
   color: #979797;
-  
+
   font-size: 16px;
   letter-spacing: 0;
   line-height: 30px;
@@ -140,6 +152,7 @@ body {
   letter-spacing: 0;
   line-height: 20px;
 }
+
 .input-form {
   height: 37px;
   width: 100%;
@@ -147,12 +160,14 @@ body {
   border-radius: 8px;
   background-color: #f9f9f9;
 }
+
 .input-form-area {
   width: 100%;
   border: 1px solid #979797;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
+
 .select {
   box-sizing: border-box;
   height: 40px;
@@ -161,6 +176,7 @@ body {
   border: 1px solid #979797;
   border-radius: 8px;
 }
+
 .btn-save {
   border: none;
   color: white;
@@ -169,9 +185,11 @@ body {
   border-radius: 9px;
   background-color: #272727;
 }
+
 .btn-save:hover {
   color: rgb(164, 164, 164);
 }
+
 .btn-a {
   border: none;
   color: white;
@@ -179,9 +197,11 @@ body {
   border-radius: 9px;
   background-color: #272727;
 }
+
 .btn-a:hover {
   color: rgb(164, 164, 164);
 }
+
 /* end admin  */
 
 
@@ -194,9 +214,10 @@ body {
   background-color: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
 }
+
 .order-title {
   color: #272727;
-  
+
   font-size: 16px;
   font-weight: bold;
 }
@@ -209,6 +230,7 @@ body {
   line-height: 30px;
   text-align: right;
 }
+
 /* end user order */
 
 /* user Address */
@@ -219,6 +241,7 @@ body {
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .btn-add-address {
   border: none;
   height: 50px;
@@ -233,78 +256,103 @@ body {
 /* user card data */
 .user-data {
   height: 270px;
-  width: 100%  !important;
+  width: 100% !important;
   border-radius: 7px;
   background-color: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(151, 151, 151, 0.5);
 }
+
 /* end user data */
+// Start Password eye 
+
+
+.password-label {
+  position: relative;
+
+  .eye {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .text-muted {
+    p {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+}
 
 // Side Bar Style
 $tablet: 768px;
 
 @mixin tablet {
-    @media (max-width: $tablet) {
-        @content;
-    }
+  @media (max-width: $tablet) {
+    @content;
+  }
 }
 
 .sidebar {
-    width: 100%;
-    border-radius: 21px;
-    background-color: #ffffff;
+  width: 100%;
+  border-radius: 21px;
+  background-color: #ffffff;
 
-    .sidebar-list {
+  .sidebar-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    a {
+      text-decoration: none;
+
+      .admin-side-text {
+        color: #272727;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 20px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        border-radius: 5px;
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
 
-        a {
-            text-decoration: none;
-
-            .admin-side-text {
-                color: #272727;
-                font-size: 12px;
-                font-weight: bold;
-                letter-spacing: 0;
-                line-height: 20px;
-                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-                width: 100%;
-                border-radius: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                svg{
-                color: #007bb8;
-                margin-left: 5px;
-                }
-                &:hover {
-                    background-color: #272727;
-                    color: white;
-                }
-            }
+        svg {
+          color: #007bb8;
+          margin-left: 5px;
         }
 
-        @include tablet {
-            flex-direction: row;
+        &:hover {
+          background-color: #272727;
+          color: white;
         }
-
-
+      }
     }
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+
+  }
 }
 
 // user product item
-.user-product-item{
+.user-product-item {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  padding:5px ;
-   border-radius:10px ;
-   margin:10px 0;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px 0;
 }
 
 
 // Add Category And Brand upload photo 
-#upload-photo{
+#upload-photo {
   opacity: 0;
   position: absolute;
   z-index: -1;

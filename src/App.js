@@ -32,43 +32,43 @@ import AdminEditPage from './Components/Admin/AdminEditPage';
 
 function App() {
 
-  
+
   return (
     <div className="App">
       <BrowserRouter >
 
-      <NavbarLogin />
-      <Routes >
-        <Route index element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/allcategorie" element={<CategoriePage />} />
-        <Route path="/allbrand" element={<AllBrand />} />
-        <Route path="/products" element={<ProductsShop />} />
-        <Route path="/products/:id" element={<ProductDetailsPage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order/paymethoud" element={<PaymentPage />} />
+        <NavbarLogin />
+        <Routes >
+          <Route index element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/allcategorie" element={<CategoriePage />} />
+          <Route path="/allbrand" element={<AllBrand />} />
+          <Route path="/products" element={<ProductsShop />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order/paymethoud" element={<PaymentPage />} />
           <Route path="admin/*" element={<AdminPage />} >
-          <Route index element={<AdminAllProductsItems />} />
-          <Route path="allorders" element={<AdminAllOrdersCom />} />
-          <Route path="addbrand" element={<AdminAddBrandCom />} />
-          <Route path="addcategory" element={<AdminAddCategoriyCom />} />
-          <Route path="addsubcategory" element={<AdminAddSubCategoriyCom />} />
-          <Route path="addproduct" element={<AdminAddProductCom />} />
-          <Route path="order/23" element={<AdminOrderDetails />} />
-          <Route path="editProduct/:id" element={<AdminEditPage />} />
-            
-        </Route>
-        <Route path='user/*' element={<UserPage />} >
-          <Route index element={<UserAllProductCom />} />
-          <Route path="favorite" element={<UserFavorite />} />
-          <Route path="addresses" element={<UserAdresses />} />
-          <Route path="profile" element={<UserProfile />} />
-          <Route path="add-address" element={<UserAddAddress />} />
-          <Route path="edit-address" element={<UserEditAdderss />} />
-        </Route>
+            <Route index element={<AdminAllProductsItems />} />
+            <Route path="allorders" element={<AdminAllOrdersCom />} />
+            <Route path="addbrand" element={<AdminAddBrandCom />} />
+            <Route path="addcategory" element={<AdminAddCategoriyCom />} />
+            <Route path="addsubcategory" element={<AdminAddSubCategoriyCom />} />
+            <Route path="addproduct" element={<AdminAddProductCom />} />
+            <Route path="order/23" element={<AdminOrderDetails />} />
+            <Route path="editProduct/:id" element={<AdminEditPage />} />
+
+          </Route>
+          <Route path='user/*' element={<UserPage />} >
+            <Route index element={<UserAllProductCom />} />
+            <Route path="favorite" element={<UserFavorite />} />
+            <Route path="addresses" element={<UserAdresses />} />
+            <Route path="profile" element={<UserProfile />} />
+            <Route path="add-address" element={<UserAddAddress />} />
+            <Route path="edit-address" element={<UserEditAdderss />} />
+          </Route>
         </Routes>
-      <Footer />
+        <Footer />
       </BrowserRouter>
 
     </div>

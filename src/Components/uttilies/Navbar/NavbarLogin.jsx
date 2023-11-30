@@ -7,14 +7,29 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavbarSearchHook from "../../../hook/search/navbar-search-hook";
+import { NavDropdown } from "react-bootstrap";
+import { useState } from "react";
+import { useEffect } from "react";
 const NavbarLogin = () => {
   const [onChangeWord, searchedWord] = NavbarSearchHook();
   let word = ""
   if (sessionStorage.getItem("searchedWord") !== null) {
     word = sessionStorage.getItem("searchedWord");
   }
-
+  const [user, setUser] = useState("")
   
+
+  useEffect(() => {
+    if (localStorage.getItem("user") !== null) {
+      setUser(JSON.parse(localStorage.getItem("user")))
+    }
+  },[])
+
+  const logOut = () => {
+    localStorage.removeItem("user");
+    setUser("");
+  }
+
 
   return (
     <div className="dark">
@@ -37,10 +52,25 @@ const NavbarLogin = () => {
                 />
               </Form>
               <Nav className="me-auto">
-                <Nav.Link href="/login">
-                  <FaUser />
-                  <span>Log In</span>
-                </Nav.Link>
+                {
+                  user !== '' ? (
+                    <NavDropdown title={user.name} id="basic-nav-dropdown">
+                      {
+                        user.role === "admin" ? (<NavDropdown.Item href="/admin">Admin Dashboard</NavDropdown.Item>) : (<NavDropdown.Item href="/user/profile">Profile</NavDropdown.Item>)
+                      }
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item onClick={logOut} href="/">Log Out</NavDropdown.Item>
+
+                    </NavDropdown>
+                  ) :
+                    (
+                      <Nav.Link href='/login'
+                      className="nav-text d-flex  justify-content-center align-items-center">
+                      <FaUser />
+                      <p className="mb-0" style={{ color: "white" }}>Log In</p>
+                    </Nav.Link>)
+                }
+
                 <Nav.Link href="/cart">
                   <AiOutlineShoppingCart />
                   <span>Cart</span>
