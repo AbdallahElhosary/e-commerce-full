@@ -46,8 +46,6 @@ const EditProductHook = (id) => {
 
 
 
-    // console.log(subCategory)
-    console.log(products)
     // Function to handle select the list on the multiselect Dropdown 
     const onSelect = (selectedList) => {
         setSeletedSubID(selectedList)
@@ -191,13 +189,6 @@ const EditProductHook = (id) => {
                     itemImages.push(dataURLtoFile(images[index], Math.random() + ".png"))
                 }
             })
-        // convert the images list to file
-        // const imagesList = Array.from(Array(Object.keys(images).length).keys()).map(
-        //     (item, index) => {
-        //         return dataURLtoFile(images[index], Math.random() + ".png")
-        //     }
-        // )
-
 
         // initailize the formData to submit it
         const formData = new FormData();

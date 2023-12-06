@@ -1,5 +1,6 @@
 import { useInsertData } from "../../hooks/useInsertData";
-import { CREATE_ACCOUNT, FORGET_PASSWORD, LOGIN } from "../type";
+import { useUpdateData } from "../../hooks/useUpdateData";
+import { CREATE_ACCOUNT, FORGET_PASSWORD, LOGIN, UPDATE_USER_PASSWORD, UPDATE_USER_DETAILS } from "../type";
 
 // Method to create a Account
 export const createAccount = (data) => async (dispatch) => {
@@ -47,6 +48,39 @@ export const forgetPassword = (data) => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: FORGET_PASSWORD,
+            payload: e.response
+        })
+    }
+}
+
+// Method to Update user Password
+export const updatePassword = (userId ,data) => async (dispatch) => {
+    try {
+        const response = await useUpdateData(`/api/v1/users/change-password/${userId}`, data);
+        dispatch({
+            type: UPDATE_USER_PASSWORD,
+            payload: response,
+            loading: true
+        })
+    } catch (e) {
+        dispatch({
+            type: UPDATE_USER_PASSWORD,
+            payload: e.response
+        })
+    }
+}
+// Method to Update user Password
+export const updateUserDetails = ( data) => async (dispatch) => {
+    try {
+        const response = await useUpdateData(`/api/v1/users/updateMe`, data);
+        dispatch({
+            type: UPDATE_USER_DETAILS,
+            payload: response,
+            loading: true
+        })
+    } catch (e) {
+        dispatch({
+            type: UPDATE_USER_DETAILS,
             payload: e.response
         })
     }

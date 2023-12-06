@@ -6,17 +6,15 @@ import { createAccount } from "../../redux/actions/authAction";
 import { useNavigate } from "react-router-dom";
 const SignUpHook = () => {
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
-
-
+    // States of the variables
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(true);
-
+    // Functions to handle the change 
     const onChangeName = (e) => {
         setName(e.target.value);
     }
@@ -32,7 +30,7 @@ const SignUpHook = () => {
     const onChangePhone = (e) => {
         setPhone(e.target.value);
     }
-
+    // Validation functions
     const validationValues = () => {
         if (name.length <= 3) {
             notify("Name length must be greater than 2", "warn");
@@ -53,7 +51,7 @@ const SignUpHook = () => {
 
     }
     const res = useSelector((state) => state.auth.createUser);
-    // console.log(res);
+    // Submit Function
     const onSubmit = async (e) => {
         e.preventDefault();
         validationValues();
@@ -74,7 +72,7 @@ const SignUpHook = () => {
             if (res) {
                 console.log(res);
                 if (res.data.token) {
-                    localStorage.setItem("token", res.data.token) 
+                    localStorage.setItem("token", res.data.token)
                     notify("Sign Up Successfully", "success");
                     setTimeout(() => {
                         navigate('/login')
@@ -83,12 +81,12 @@ const SignUpHook = () => {
                 if (res.data.errors) {
                     if (res.data.errors[0].msg === "E-mail already in use") {
                         notify("Email Is Already Used", "error");
-                    } else if (res.data.errors[0].msg==="accept only egypt phone numbers") {
+                    } else if (res.data.errors[0].msg === "accept only egypt phone numbers") {
                         notify("Please Enter Vaild Eg Phone", "error");
-                        
+
                     } else if (res.data.errors[0].msg === "must be at least 6 chars") {
                         notify("Password must be at least 6 chars", "error");
-                        
+
                     }
                 }
             }

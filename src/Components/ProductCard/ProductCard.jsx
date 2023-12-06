@@ -1,11 +1,27 @@
 import React from 'react'
 import "./ProductCard.css"
 import { Card, Col } from 'react-bootstrap'
-import favoff from "../../assets/images/fav-off.png";
 import rate from "../../assets/images/rate.png";
-import { Link } from 'react-router-dom';
-const ProductCard = ({ item }) => {
-    
+import { Link, useNavigate } from 'react-router-dom';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import ProductCardHook from '../../hook/products/product-card-hook';
+import { ToastContainer } from 'react-toastify';
+import { useEffect } from 'react';
+const ProductCard = ({ item, wishList }) => {
+    const navigate = useNavigate();
+    const [addProductRes, onAddProductToWish, onRemoveProductToWish, wishListAdded, setWishListAdded] = ProductCardHook(item._id);
+    const onClickProduct = () => {
+        navigate(`/products/${item._id}`)
+        window.location.reload()
+    }
+
+    useEffect(() => {
+        if (wishList.some(ifItem => ifItem === item._id)) {
+            setWishListAdded(true)
+        } else {
+            setWishListAdded(false)
+        }
+    },[wishList])
     return (
         <Col xs="12" sm="12" md="6" lg="3"  className="d-flex">
 
@@ -14,19 +30,17 @@ const ProductCard = ({ item }) => {
                 style={{
                     
                 }}>
-                <Link to={`/products/${item._id}`} style={{ textDecoration: 'none' }}>
-                    <Card.Img style={{ height: "228px", width: "100%" }} src={item.imageCover} />
+                <Link onClick={onClickProduct} style={{ textDecoration: 'none' }}>
+                    <Card.Img style={{ height: "228px", width: "100%" }} src={`${item.imageCover.startsWith("http") ? item.imageCover : `http://127.0.0.1:8000/products/${item.imageCover}`}`} />
                 </Link>
-                <div className="d-flex justify-content-end mx-2">
-                    <img
-                        src={favoff}
-                        alt=""
-                        className="text-center"
-                        style={{
-                            height: "24px",
-                            width: "26px",
-                        }}
-                    />
+                <div className="wishlist d-flex justify-content-end mx-2 mt-2">
+                    {
+                        wishListAdded === false ? (
+                            <FaRegHeart onClick={onAddProductToWish} />
+                        ): (
+                            <FaHeart onClick={onRemoveProductToWish} />
+                        )
+                    }
                 </div>
                 <Card.Body>
                     <Card.Title>
@@ -54,6 +68,7 @@ const ProductCard = ({ item }) => {
                     </Card.Text>
                 </Card.Body>
             </Card>
+            <ToastContainer />
         </Col>
     )
 }

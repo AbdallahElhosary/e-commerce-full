@@ -11,9 +11,7 @@ const SidebarSearchHook = () => {
 
   // Get All Category with limit
   useEffect(() => {
-
-       dispatch(getAllCaetgory(6));
-
+    dispatch(getAllCaetgory(6));
   }, [])
   // Select Category
   const category = useSelector(state => state.allCategory.category);

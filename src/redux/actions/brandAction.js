@@ -1,6 +1,6 @@
-import useGetData from "../../hooks/useGetData";
+import {useGetData} from "../../hooks/useGetData";
 import { useInsertDataImage } from "../../hooks/useInsertData";
-import { CREATE_BRAND, GET_ALL_BRAND, GET_ERROR } from "../type";
+import { CREATE_BRAND, GET_ALL_BRAND, GET_ERROR, GET_ONE_BRAND } from "../type";
 
 // Action to get all categories
 export const getAllBrand = (limit) => async (dispatch) => {
@@ -50,3 +50,18 @@ export const createBrand = (formData) => async (dispatch) => {
     }
 }
 
+// Action to get one Brand by id
+export const getOneBrand = (brandID) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/brands/${brandID}`);
+        dispatch({
+            type: GET_ONE_BRAND,
+            payload: response
+        })
+    } catch (e) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Erorr" + e
+        })
+    }
+}

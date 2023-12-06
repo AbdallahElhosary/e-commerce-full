@@ -1,6 +1,6 @@
-import useGetData from "../../hooks/useGetData";
+import {useGetData} from "../../hooks/useGetData";
 import { useInsertDataImage } from "../../hooks/useInsertData";
-import { CREATE_CATEGORY, GET_ALL_CATEGORY, GET_ERROR } from "../type";
+import { CREATE_CATEGORY, GET_ALL_CATEGORY, GET_ERROR, GET_ONE_CATEGORY } from "../type";
 
 // Action to get all categories
 export const getAllCaetgory = (limit) => async (dispatch) => {
@@ -52,3 +52,19 @@ export const createCategory = (formData) => async (dispatch) => {
     }
 }
 
+
+// Action to get one category by id
+export const getOneCategory = (catID) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/categories/${catID}`);
+        dispatch({
+            type: GET_ONE_CATEGORY,
+            payload: response
+        })
+    } catch (e) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Erorr" + e
+        })
+    }
+}

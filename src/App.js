@@ -65,7 +65,7 @@ function App() {
             <Route path="addresses" element={<UserAdresses />} />
             <Route path="profile" element={<UserProfile />} />
             <Route path="add-address" element={<UserAddAddress />} />
-            <Route path="edit-address" element={<UserEditAdderss />} />
+            <Route path="edit-address/:id" element={<UserEditAdderss />} />
           </Route>
         </Routes>
         <Footer />

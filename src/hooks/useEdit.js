@@ -17,6 +17,6 @@ const useEditData = async (url, params) => {
         }
     }
     const res = await baseUrl.put(url, params, config);
-    return res.data
+    return res
 }
 export { useEdittDataImage, useEditData };

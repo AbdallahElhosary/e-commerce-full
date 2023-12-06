@@ -7,10 +7,16 @@ const ViewHomeProductHook = () => {
     const dispatch = useDispatch();
     // useEffect to dispatch the action of all category
     useEffect(() => {
-        dispatch(getAllProduct());
+      const get = async () => {
+        await dispatch(getAllProduct());
+      }
+      get();
     }, [])
     // Select Sub products
   const allProducts = useSelector(state => state.allProduct.allProducts);
+  const category = useSelector(state => state.allCategory.category);
+  const brand = useSelector(state => state.allBrand.brand);
+  
 
   let products = [];
   if (allProducts.data) {

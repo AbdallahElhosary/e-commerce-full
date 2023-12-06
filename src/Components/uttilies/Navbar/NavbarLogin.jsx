@@ -11,22 +11,26 @@ import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect } from "react";
 const NavbarLogin = () => {
-  const [onChangeWord, searchedWord] = NavbarSearchHook();
+  const [onChangeWord,] = NavbarSearchHook();
   let word = ""
   if (sessionStorage.getItem("searchedWord") !== null) {
     word = sessionStorage.getItem("searchedWord");
   }
   const [user, setUser] = useState("")
-  
 
   useEffect(() => {
     if (localStorage.getItem("user") !== null) {
       setUser(JSON.parse(localStorage.getItem("user")))
+    } else {
+      setUser("")
     }
   },[])
 
+  
+
   const logOut = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser("");
   }
 
@@ -53,14 +57,13 @@ const NavbarLogin = () => {
               </Form>
               <Nav className="me-auto">
                 {
-                  user !== '' ? (
+                  user!=="" ? (
                     <NavDropdown title={user.name} id="basic-nav-dropdown">
                       {
                         user.role === "admin" ? (<NavDropdown.Item href="/admin">Admin Dashboard</NavDropdown.Item>) : (<NavDropdown.Item href="/user/profile">Profile</NavDropdown.Item>)
                       }
                       <NavDropdown.Divider />
                       <NavDropdown.Item onClick={logOut} href="/">Log Out</NavDropdown.Item>
-
                     </NavDropdown>
                   ) :
                     (

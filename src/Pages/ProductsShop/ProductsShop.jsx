@@ -1,20 +1,15 @@
 import React from 'react'
-import CategorieHeader from '../../Components/Categorie/CategorieHeader/CategorieHeader'
 import FilterCount from '../../Components/uttilies/FilterCount/FilterCount'
 import { Col, Container, Row } from 'react-bootstrap'
 import SideBar from '../../Components/uttilies/SideBar/SideBar'
 import CardProductsCon from '../../Components/CardProductsCon/CardProductsCon'
-import AllCategoryPageHook from '../../hook/category/all-category-page-hook'
-import AllBrandPageHook from '../../hook/brand/all-brand-page-hook'
 import ViewSearchProductHook from '../../hook/products/view-search-product-hook'
 import Paginate from '../../Components/uttilies/Pagination/Pagination'
 
 const ProductsShop = () => {
 
-    const [items, pagination, onPress, getProduct, results] = ViewSearchProductHook()
+    const [items, pagination, onPress, getProduct] = ViewSearchProductHook()
     
-    const [category] = AllCategoryPageHook();
-    const [brand] = AllBrandPageHook();
     if (pagination) {
         var pageCount = pagination
     } else {
@@ -24,7 +19,6 @@ const ProductsShop = () => {
 
     return (
         <div style={{ minHeight: "50vh" }}>
-            <CategorieHeader />
             <Container>
                 <FilterCount products={items} getProduct={getProduct} />
 

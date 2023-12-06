@@ -1,31 +1,66 @@
 import React from 'react'
-import { Row, Col, FloatingLabel, Form } from 'react-bootstrap'
+import { Row, Col, Form } from 'react-bootstrap'
+import AddAddressHook from '../../hook/address/add-address-hook'
+import { ToastContainer } from 'react-toastify';
 const UserAddAddress = () => {
+
+    const [alias, details, phone, city, postal, onChangeAlias, onChangeDetails, onChangePhone, onChangeCity, onChangePostal, onAddAddress] = AddAddressHook();
     return (
         <div>
             <Row className="justify-content-start ">
                 <h2>Add New Address</h2>
                 <Col sm="8">
-                    <FloatingLabel controlId="floatingPassword" label="Address Description(Home-Work)" className="my-3">
-                        <Form.Control type="text" placeholder="Address Description(Home-Work)" />
-                    </FloatingLabel>
-                    <FloatingLabel controlId="floatingTextarea2" label="Address in detail">
-                        <Form.Control
-                            as="textarea"
-                            placeholder="Address in detail"
-                            style={{ height: '100px' }}
-                        />
-                    </FloatingLabel>
-                    <FloatingLabel controlId="floatingPassword" label="Phone Number" className="my-3">
-                        <Form.Control type="text" placeholder="Phone Number" />
-                    </FloatingLabel>
+                    <Form.Label htmlFor="inputAddress5" className='my-1'>Address</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputAddress5"
+                        aria-describedby="passwordHelpBlock"
+                        placeholder="Address Description(Home-Work)"
+                        onChange={onChangeAlias}
+                        value={alias}
+                    />
+                    <Form.Label htmlFor="inputAddress6" className='my-1'>Address Details</Form.Label>
+                    <Form.Control
+                        type="textarea"
+                        as="textarea"
+                        id="inputAddress6"
+                        aria-describedby="passwordHelpBlock"
+                        onChange={onChangeDetails}
+                        value={details}
+                    />
+                    <Form.Label htmlFor="inputPhone5" className='my-1'>Phone</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputPhone5"
+                        aria-describedby="passwordHelpBlock"
+                        onChange={onChangePhone}
+                        value={phone}
+                    />
+                    <Form.Label htmlFor="inputCity5" className='my-1'>City</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputCity5"
+                        aria-describedby="passwordHelpBlock"
+                        placeholder='Ex : Cairo'
+                        onChange={onChangeCity}
+                        value={city}
+                    />
+                    <Form.Label htmlFor="inputPostal5" className='my-1'>Postal Code</Form.Label>
+                    <Form.Control
+                        type="text"
+                        id="inputPostal5"
+                        aria-describedby="passwordHelpBlock"
+                        onChange={onChangePostal}
+                        value={postal}
+                    />
                 </Col>
             </Row>
             <Row>
-                <Col sm="8" className="d-flex justify-content-end ">
-                    <button className="btn-save d-inline mt-2 ">Add Address</button>
+                <Col sm="8" className="d-flex justify-content-end mt-2">
+                    <button className="btn-dark" style={{ backgroundColor: "black" }} onClick={onAddAddress}>Add Address</button>
                 </Col>
             </Row>
+            <ToastContainer />
         </div>
     )
 }

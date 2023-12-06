@@ -9,12 +9,12 @@ import { useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { ToastContainer } from 'react-toastify';
 const LoginPage = () => {
-const [passType, setPassType] = useState(true);
-  const [email, password, loading, onChangeEmail, onChangePassword,onSubmit] = LoginHook();
+  const [passType, setPassType] = useState(true);
+  const [email, password, loading, onChangeEmail, onChangePassword, onSubmit] = LoginHook();
 
   const pasIconClick = () => {
-        setPassType(!passType)
-    }
+    setPassType(!passType)
+  }
   return (
     <Container className="mt-5 mb-5">
       <Row className="container justify-content-center align-items-center" >
@@ -31,11 +31,11 @@ const [passType, setPassType] = useState(true);
           </FloatingLabel>
           <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3 password-label" onChange={onChangePassword} value={password}>
             <Form.Control type={`${passType === true ? "password" : "text"}`} placeholder="Password" />
-                        {
-                            passType === false
-                                ? <BsEyeFill className='eye' style={{ display: `${password !== "" ? "block" : "none"}` }} onClick={pasIconClick} />
-                                : <BsEyeSlashFill className='eye' style={{ display: `${password !== "" ? "block" : "none"}` }} onClick={pasIconClick} />
-                        }
+            {
+              passType === false
+                ? <BsEyeFill className='eye' style={{ display: `${password !== "" ? "block" : "none"}` }} onClick={pasIconClick} />
+                : <BsEyeSlashFill className='eye' style={{ display: `${password !== "" ? "block" : "none"}` }} onClick={pasIconClick} />
+            }
           </FloatingLabel>
           <Button variant="dark" type="submit" className="w-100" onClick={onSubmit}>
             Submit

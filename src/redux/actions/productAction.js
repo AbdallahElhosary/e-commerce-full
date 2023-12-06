@@ -1,8 +1,8 @@
 import useDeleteData from "../../hooks/useDelete";
-import useEditData, { useEdittDataImage } from "../../hooks/useEdit";
-import useGetData from "../../hooks/useGetData";
+import  { useEdittDataImage } from "../../hooks/useEdit";
+import {useGetData} from "../../hooks/useGetData";
 import { useInsertDataImage } from "../../hooks/useInsertData";
-import { CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, GET_ALL_PRODUCTS, GET_ERROR, GET_SIMILER_PRODUCTS } from "../type";
+import { CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, GET_ALL_PRODUCTS, GET_ERROR, GET_SIMILER_PRODUCTS, GET_ONE_PRODUCTS, GET_PRODUCT_LIKE } from "../type";
 
 
 // funciton to create a product
@@ -123,6 +123,39 @@ export const getAllProductsSearch = (queryString) => async (dispatch) => {
         dispatch({
             type: GET_ERROR,
             payload: "Erorr" + e
+        })
+    }
+}
+// Action to get one product by id
+export const getOneProduct = (prodID) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/products/${prodID}`);
+        dispatch({
+            type: GET_ONE_PRODUCTS,
+            payload: response,
+            loading: true
+        })
+    } catch (e) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Erorr" + e
+        })
+    }
+}
+//get one product with id
+export const getProductLike = (id) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/products?category=${id}`);
+        dispatch({
+            type: GET_PRODUCT_LIKE,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Error " + e,
         })
     }
 }

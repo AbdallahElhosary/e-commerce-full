@@ -1,24 +1,30 @@
-import React, { useState } from 'react'
 import "./Rate.scss";
 import { Col, Row } from 'react-bootstrap';
 import { Rating } from 'react-simple-star-rating'
+import AddReviewHook from '../../hook/review/add-review-hook';
+import { useParams } from 'react-router-dom';
 
-const RateForm = ({ comments }) => {
-    const [rating, setRating] = useState(0)
+const RateForm = ({ reviews }) => {
+    const { id } = useParams();
+    const [setRate, onChangeReview, onSubmit, rate, review, user] = AddReviewHook(id);
 
+    let name;
+    if (user) {
+        name =user.name
+    }
     // Catch Rating value
     const handleRating = (rate) => {
-        setRating(rate)
+        setRate(rate)
     }
     return (
         <div>
             <Row className="mt-3 ">
                 <Col sm="12" className="me-5  d-flex align-items-center">
-                    <div className="rate-name  d-inline ms-3 mt-1 mx-2">Abdallah Elhosary</div>
+                    <div className="rate-name  d-inline ms-3 mt-1 mx-2">{name}</div>
                     <Rating
                         onClick={handleRating}
                         size={20}
-                        initialValue={rating} />
+                        initialValue={rate} />
                 </Col>
             </Row>
             <Row className="border-bottom mx-2">
@@ -26,9 +32,11 @@ const RateForm = ({ comments }) => {
                     <textarea
                         className="input-form-area p-2 mt-3 w-100"
                         placeholder="Write Comment...."
+                        onChange={onChangeReview}
+                        value={review}
                     />
-                    <div className=" d-flex al">
-                        <div className="btn btn-outline-dark text-center rounded-pill">Add Comment</div>
+                    <div className="d-flex al">
+                        <div className="btn btn-outline-dark text-center rounded-pill" onClick={onSubmit}>Add Comment</div>
                     </div>
                 </Col>
             </Row>

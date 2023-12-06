@@ -37,3 +37,11 @@
     letter-spacing: 0;
     line-height: 19px;
 }
+
+.wishlist svg{
+    cursor: pointer;
+    font: 40px;
+}
+.wishlist svg:hover{
+    transform: scale(1.1);
+}

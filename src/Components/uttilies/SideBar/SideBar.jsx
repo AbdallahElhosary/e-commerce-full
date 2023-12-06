@@ -29,11 +29,11 @@ const SideBar = () => {
                         <label htmlFor="default-checkbox">All</label>
                     </div>
                     {
-                        category.data &&
+                        category && category.data &&
                         category.data.map((cat) => {
                             return (
                                 <div onClick={selectCategory} className='checkbox' key={cat._id}>
-                                    <input type="checkbox" id={cat._id} name={cat.name} disabled={allChecked}   />
+                                    <input type="checkbox" id={cat._id} name={cat.name} disabled={allChecked} />
                                     <label htmlFor={cat._id}>{cat.name}</label>
                                 </div>
                             )
@@ -43,7 +43,7 @@ const SideBar = () => {
                 <div className="d-flex flex-column mt-2">
                     <div className="filter-title mt-3">The brand</div>
                     {
-                        brand.data &&
+                        brand && brand.data &&
                         brand.data.map((brand) => {
                             return (
                                 <div className="form-check form-switch" onClick={selectBrand} key={brand._id}>

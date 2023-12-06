@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import {FiCheckCircle} from "react-icons/fi"
+import { FiCheckCircle } from "react-icons/fi"
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { FiXCircle } from "react-icons/fi";
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 
 const Register = () => {
     const [name, email, password, confirmPassword, phone,
-        onChangeName, onChangeEmail, onChangePassword, onChangeConfirmPassword, onChangePhone, loading,onSubmit] = SignUpHook();
+        onChangeName, onChangeEmail, onChangePassword, onChangeConfirmPassword, onChangePhone, loading, onSubmit] = SignUpHook();
     const [passType, setPassType] = useState(true);
     const [confirmpassType, setConfirmPassType] = useState(true);
 
@@ -67,15 +67,15 @@ const Register = () => {
                                 : <BsEyeSlashFill className='eye' style={{ display: `${confirmPassword !== "" ? "block" : "none"}` }} onClick={confirmPasIconClick} />
                         }
                         <Form.Text className="text-muted">
-                        {
-                        password !== "" && confirmPassword !== "" ?
-                            password !== confirmPassword ? <p><FiXCircle className='text-danger'/> Not Equal </p> : <p><FiCheckCircle className='text-success'/>Equal</p>:<></>
-                        }
-                    </Form.Text>
+                            {
+                                password !== "" && confirmPassword !== "" ?
+                                    password !== confirmPassword ? <p><FiXCircle className='text-danger' /> Not Equal </p> : <p><FiCheckCircle className='text-success' />Equal</p> : <></>
+                            }
+                        </Form.Text>
                     </FloatingLabel>
-                    
-                    
-                    
+
+
+
                     <Button variant="dark" type="submit" className="w-100" onClick={onSubmit}>
                         Submit
                     </Button>

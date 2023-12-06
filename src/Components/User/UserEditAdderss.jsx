@@ -1,32 +1,65 @@
 import React from 'react'
-import { Row, Col, FloatingLabel, Form } from 'react-bootstrap'
+import { Row, Col, Form } from 'react-bootstrap'
+import EditAddressHook from '../../hook/address/edit-address-hook'
+import { useParams } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 const UserEditAdderss = () => {
+    const { id } = useParams();
+    const [spetificAddRes, alias, city, phone, details, postal, onChangeAlias, onChangeCity, onChangeDetails, onChangePhone, onChangePostal, onEdit] = EditAddressHook(id);
   return (
       <div>
           <Row className="justify-content-start ">
-              <h2>Add New Address</h2>
+              <h2>Edit Address</h2>
               <Col sm="8">
-                  <FloatingLabel controlId="floatingPassword" label="Address Description(Home-Work)" className="my-3">
-                      <Form.Control type="text" placeholder="Address Description(Home-Work)" />
-                  </FloatingLabel>
-                  <FloatingLabel controlId="floatingTextarea2" label="Address in detail">
-                      <Form.Control
-                          as="textarea"
-                          value="Location: El Bagour-Menofia-Egypt"
-                          placeholder="Address in detail"
-                          style={{ height: '100px' }}
-                      />
-                  </FloatingLabel>
-                  <FloatingLabel controlId="floatingPassword" label="Phone Number" className="my-3">
-                      <Form.Control type="text" placeholder="Phone Number" value="+201113833591"/>
-                  </FloatingLabel>
+                  <Form.Label htmlFor="inputAddress5" className='my-1'>Address</Form.Label>
+                  <Form.Control
+                      type="text"
+                      id="inputAddress5"
+                      aria-describedby="passwordHelpBlock"
+                      onChange={onChangeAlias}
+                      value={alias}
+                  />
+                  <Form.Label htmlFor="inputAddress5" className='my-1'>Address Details</Form.Label>
+                  <Form.Control
+                      type="textarea"
+                      as="textarea"
+                      id="inputAddress5"
+                      aria-describedby="passwordHelpBlock"
+                      onChange={onChangeDetails}
+                      value={details}
+                  />
+                  <Form.Label htmlFor="inputPhone5" className='my-1'>Phone</Form.Label>
+                  <Form.Control
+                      type="text"
+                      id="inputPhone5"
+                      aria-describedby="passwordHelpBlock"
+                      onChange={onChangePhone}
+                      value={phone}
+                  />
+                  <Form.Label htmlFor="inputPhone5" className='my-1'>City</Form.Label>
+                  <Form.Control
+                      type="text"
+                      id="inputPhone5"
+                      aria-describedby="passwordHelpBlock"
+                      onChange={onChangeCity}
+                      value={city}
+                  />
+                  <Form.Label htmlFor="inputPhone5" className='my-1'>Postal</Form.Label>
+                  <Form.Control
+                      type="text"
+                      id="inputPhone5"
+                      aria-describedby="passwordHelpBlock"
+                      onChange={onChangePostal}
+                      value={postal}
+                  />
               </Col>
           </Row>
           <Row>
-              <Col sm="8" className="d-flex">
-                  <button className="btn-save d-inline mt-2 ">Save Address</button>
+              <Col sm="8" className="d-flex mt-2">
+                  <button style={{backgroundColor:"black"}} onClick={onEdit}>Save Address</button>
               </Col>
           </Row>
+          <ToastContainer />
       </div>
   )
 }
