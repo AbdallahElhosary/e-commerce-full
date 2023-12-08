@@ -3,12 +3,15 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import ViewProductsDetalisHook from "../../../hook/products/view-product-details-hook";
 import { useParams } from "react-router-dom";
+import AddCartHook from "../../../hook/cart/add-cart-hook";
+import { ToastContainer } from "react-toastify";
 
 const ProductText = () => {
 
   const { id } = useParams();
   
   const [item, images, cat, brand, prod] = ViewProductsDetalisHook(id)
+  const [onChangeColor, indexColor, onAddProductCart] = AddCartHook(id, item);
   
 
   return (
@@ -41,9 +44,10 @@ const ProductText = () => {
           {
             item.availableColors ? (item.availableColors.map((color, index) => {
               return (<div
+                onClick={()=>onChangeColor(index ,  color)}
                 key={index}
                 className="color ms-2"
-                style={{ backgroundColor: color }}></div>)
+                style={{ backgroundColor: color, border: indexColor === index ? '3px solid yellow' : 'none' }}></div>)
             })) : null
           }
         </Col>
@@ -63,9 +67,10 @@ const ProductText = () => {
       <Row className="mt-4">
         <Col md="12">
           <div className="product-price d-inline px-3 py-3 border">{item.price} EGP</div>
-          <div className="product-cart-add px-3 py-3 d-inline mx-3">Add To Cart</div>
+          <div className="product-cart-add px-3 py-3 d-inline mx-3" onClick={onAddProductCart}>Add To Cart</div>
         </Col>
       </Row>
+      <ToastContainer />
     </div>
   )
 }

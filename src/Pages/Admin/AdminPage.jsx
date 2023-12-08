@@ -9,6 +9,8 @@ import AdminAddSubCategoriyCom from '../../Components/Admin/AdminAddSubCategoriy
 import AdminAddProductCom from '../../Components/Admin/AdminAddProductCom'
 import AdminOrderDetails from '../../Components/Admin/AdminOrderDetails'
 import AdminEditPage from '../../Components/Admin/AdminEditPage'
+import AdminAddCoupon from '../../Components/Admin/AdminAddCoupon'
+import AdminEditCoupon from '../../Components/Admin/AdminEditCoupon'
 
 const AdminPage = () => {
     return (
@@ -25,6 +27,8 @@ const AdminPage = () => {
                         <Route path="/addcategory" element={<AdminAddCategoriyCom />} />
                         <Route path="/addsubcategory" element={<AdminAddSubCategoriyCom />} />
                         <Route path="/addproduct" element={<AdminAddProductCom />} />
+                        <Route path="/addcoupon" element={<AdminAddCoupon />} />
+                        <Route path="/editcoupon/:id" element={<AdminEditCoupon />} />
                         <Route path="/order/23" element={<AdminOrderDetails />} />
                         <Route path="/editProduct/:id" element={<AdminEditPage />} />
                     </Routes>

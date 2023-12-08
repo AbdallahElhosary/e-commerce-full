@@ -35,7 +35,7 @@ const AdminAddBrandCom = () => {
         </Col>
       </Row>
       <Row>
-        <Col sm="8" className="d-flex justify-content-end ">
+        <Col sm="8" className="d-flex">
           <button className="my-2 btn btn-dark" onClick={handleSubmit}>Save Edit</button>
         </Col>
       </Row>

@@ -1,26 +1,63 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-const CartCheckout = () => {
-  return (
-      <Row className="my-1 d-flex justify-content-center cart-checkout pt-3">
-          <Col xs="12" className="d-flex  flex-column  ">
-              <div className="d-flex  ">
-                  <input
-                      className="copon-input d-inline text-center "
-                      placeholder="discount code"
-                  />
-                  <button className="copon-btn d-inline ">Check</button>
-              </div>
-              <div className="product-price d-inline w-100 my-3  border">34000 EGP</div>
-              <Link
-                  to="/order/paymethoud"
-                  style={{ textDecoration: "none" }}
-                  className="product-cart-add  d-inline ">
-                  <button className="product-cart-add w-100 px-2">Buy</button>
-              </Link>
-          </Col>
-      </Row>
+import { Button, Col, Modal, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import DeleteCartHook from '../../../hook/cart/delete-cart-hook'
+import ApplyCouponCartHook from '../../../hook/cart/apply-coupon-cart-hook'
+import { ToastContainer } from 'react-toastify'
+import { useEffect } from 'react'
+const CartCheckout = ({ couponNameRes, priceAfterDiscount, totalCartPrice }) => {
+    const navigate = useNavigate();
+    const [show, handleClose, handleShow, , onDeleteAllCart] = DeleteCartHook();
+    const [couponName, onChangeCouponName, onApplyCoupon] = ApplyCouponCartHook();
+
+    useEffect(() => {
+        if (couponNameRes) {
+            onChangeCouponName(couponNameRes)
+        }
+    }, [couponNameRes])
+
+    return (
+      <>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete All The Products From Cart?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="success" onClick={onDeleteAllCart}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Row className="my-1 d-flex justify-content-center cart-checkout pt-3">
+                <Col xs="12" className="d-flex  flex-column  ">
+                    <div className="d-flex  ">
+                        <input
+                            className="copon-input  text-center "
+                            placeholder="discount code"
+                            value={couponName}
+                            onChange={(e)=>onChangeCouponName(e.target.value)}
+                        />
+                        <button className="copon-btn d-inline" onClick={onApplyCoupon}>Check</button>
+                    </div>
+                    <div className="product-price w-100 my-3  border fs-4">
+                        {
+                                priceAfterDiscount >= 1 ?
+                                <><del>{totalCartPrice}</del>-{priceAfterDiscount}EGP</> :
+                                `${totalCartPrice}EGP`
+                        }
+                    </div>
+                        <button className="btn btn-dark px-2 my-2" onClick={() => navigate("/order/paymethoud")}>Buy</button>
+                        <button className="btn btn-dark px-2 my-2" onClick={handleShow}> Clear Cart</button> 
+                    
+                </Col>
+            </Row>
+            <ToastContainer />
+      </>
+      
   )
 }
 

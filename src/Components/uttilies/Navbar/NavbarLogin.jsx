@@ -10,6 +10,7 @@ import NavbarSearchHook from "../../../hook/search/navbar-search-hook";
 import { NavDropdown } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect } from "react";
+import GetAllUserCartHook from "../../../hook/cart/get-all-user-cart-hook";
 const NavbarLogin = () => {
   const [onChangeWord,] = NavbarSearchHook();
   let word = ""
@@ -33,6 +34,8 @@ const NavbarLogin = () => {
     localStorage.removeItem("token");
     setUser("");
   }
+
+  const [allCart, cartNumber] = GetAllUserCartHook();
 
 
   return (
@@ -73,11 +76,12 @@ const NavbarLogin = () => {
                       <p className="mb-0" style={{ color: "white" }}>Log In</p>
                     </Nav.Link>)
                 }
-
-                <Nav.Link href="/cart">
-                  <AiOutlineShoppingCart />
-                  <span>Cart</span>
+                <Nav.Link href="/cart" className="cart">
+                  <span className="count">{cartNumber }</span>
+                  <AiOutlineShoppingCart className="material-icons" />
                 </Nav.Link>
+
+                
               </Nav>
             </Navbar.Collapse>
           </Container>

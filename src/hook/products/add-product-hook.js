@@ -29,7 +29,6 @@ const AddProductHook = () => {
     // Select Sub products
     const products = useSelector(state => state.allProduct.products);
 
-    console.log(subCategory)
 
     // get the variables from the add product hook function
     const [showColor, setShowColor] = useState(false);

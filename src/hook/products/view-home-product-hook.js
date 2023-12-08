@@ -19,11 +19,10 @@ const ViewHomeProductHook = () => {
   
 
   let products = [];
-  if (allProducts.data) {
-    products = allProducts.data
-  } else {
-    products = [];
-  }
+  try {
+        if (allProducts && allProducts.data.length >= 1)
+            products = allProducts.data
+    } catch (e) { }
 
     
     

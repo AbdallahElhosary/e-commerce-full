@@ -96,7 +96,7 @@ const AdminAddProductCom = () => {
         </Col>
       </Row>
       <Row>
-        <Col sm="8" className="d-flex justify-content-end ">
+        <Col sm="8" className="d-flex">
           <button className="my-2 btn btn-dark rounded-pill" onClick={handleSubmitProducts}>Save Edit</button>
         </Col>
       </Row>

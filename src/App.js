@@ -29,6 +29,8 @@ import UserProfile from './Components/User/UserProfile';
 import UserAddAddress from './Components/User/UserAddAddress';
 import UserEditAdderss from './Components/User/UserEditAdderss';
 import AdminEditPage from './Components/Admin/AdminEditPage';
+import AdminAddCoupon from './Components/Admin/AdminAddCoupon';
+import AdminEditCoupon from './Components/Admin/AdminEditCoupon';
 
 function App() {
 
@@ -55,6 +57,8 @@ function App() {
             <Route path="addcategory" element={<AdminAddCategoriyCom />} />
             <Route path="addsubcategory" element={<AdminAddSubCategoriyCom />} />
             <Route path="addproduct" element={<AdminAddProductCom />} />
+            <Route path="addcoupon" element={<AdminAddCoupon />} />
+            <Route path="editcoupon/:id" element={<AdminEditCoupon />} />
             <Route path="order/23" element={<AdminOrderDetails />} />
             <Route path="editProduct/:id" element={<AdminEditPage />} />
 
