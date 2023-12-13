@@ -170,9 +170,8 @@ body {
 
 .select {
   box-sizing: border-box;
-  height: 40px;
-  color: #979797;
-  width: 100%;
+  // height: 40px;
+  padding: 5px;
   border: 1px solid #979797;
   border-radius: 8px;
 }
@@ -345,7 +344,7 @@ $tablet: 768px;
 // user product item
 .user-product-item {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
   margin: 10px 0;
 }

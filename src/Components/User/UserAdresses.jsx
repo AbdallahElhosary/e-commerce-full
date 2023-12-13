@@ -5,13 +5,13 @@ import GetAddressHook from '../../hook/address/get-address-hook';
 import { Spinner } from 'react-bootstrap';
 const UserAdresses = () => {
     const navigate = useNavigate();
-    const [res, onDeleteAddress] = GetAddressHook();
+    const [address, onDeleteAddress] = GetAddressHook();
     return (
         <div>
             <h2>Personal Addresses</h2>
             {
-                 res ? res.data ? (
-                    res.data.map((add) => {
+                 address ? address.data ? (
+                    address.data.map((add) => {
                         return (
                             <UserAddressCard key={add._id} add={add} />
                         )

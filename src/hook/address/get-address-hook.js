@@ -21,14 +21,8 @@ const GetAddressHook = (add) => {
         get()
     }, [])
     
-    const res = useSelector((state) => state.userAddress.getAddress);
-    console.log(res)
-    let address=[];
-    if (res.data) {
-        address = res.data
-    } else {
-        address = []
-    }
+    const address = useSelector((state) => state.userAddress.getAddress);
+    
     // Function to handle the delteion 
 
     const onDeleteAddress = async () => {
@@ -55,7 +49,7 @@ const GetAddressHook = (add) => {
     }, [loading])
     // --------------------------------------------------------------
 
-    return [res, onDeleteAddress, show, handleClose, handleShow]
+    return [address, onDeleteAddress, show, handleClose, handleShow]
 }
 
 export default GetAddressHook

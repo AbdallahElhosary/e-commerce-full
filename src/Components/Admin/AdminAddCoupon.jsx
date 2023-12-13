@@ -15,8 +15,8 @@ const AdminAddCoupon = () => {
                   <FloatingLabel controlId="floatingPassword" label="Coupon Name" className="my-3" onChange={onChangeName} value={couponName}>
                       <Form.Control type="text" placeholder="Coupon Name"  />
                   </FloatingLabel>
-                  <FloatingLabel controlId="floatingPassword" label="Coupon Name" className="my-3" onChange={onChangeExpire} value={expire}>
-                      <Form.Control type="date" placeholder="expire Name"  min={currentDate}/>
+                  <FloatingLabel controlId="floatingPassword" label="Coupon expire" className="my-3" onChange={onChangeExpire} value={expire}>
+                      <Form.Control type="date" placeholder="expire"  min={currentDate}/>
                   </FloatingLabel>
                   <FloatingLabel controlId="floatingPassword" label="Discount Quantity" className="my-3" onChange={onChangeDiscount} value={discount}>
                       <Form.Control type="number" placeholder="Discount Quantity" />

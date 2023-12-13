@@ -19,11 +19,10 @@ const BrandFeatured = ({ title, btnTitle }) => {
           loading === false ? brand.data ? (
             brand.data.slice(0, 5).map((item,index) => {
               return (
-                <BrandCard key={index}  img={item.image} />
-
+                <BrandCard key={index} brand={item} />
               )
             })
-          ) : (<h4>There Is no Categories</h4>)
+          ) : (<h4>There Is no Brands</h4>)
             : <Spinner animation="border" variant="primary" />
         }
             </Row>

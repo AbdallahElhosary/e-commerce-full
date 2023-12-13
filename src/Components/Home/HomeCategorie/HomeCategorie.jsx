@@ -14,7 +14,7 @@ const HomeCategorie = () => {
           loading === false ? category.data ? (
             category.data.slice(0, 6).map((item,index) => {
               return (
-                <CategorieCard key={index} title={item.name} background={colors[Math.floor(Math.random() * 5) + 1]} img={item.image} />
+                <CategorieCard key={index} title={item.name} background={colors[Math.floor(Math.random() * 5) + 1]} img={item.image} category={item}/>
 
               )
             })

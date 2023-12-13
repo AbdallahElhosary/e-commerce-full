@@ -22,7 +22,7 @@ const Cart = () => {
                     
                 </Col>
                 <Col md="3" xs="12">
-                    <CartCheckout couponNameRes={couponName} priceAfterDiscount={priceAfterDiscount} totalCartPrice={totalCartPrice} />
+                    <CartCheckout couponNameRes={couponName} cartItems={allCart} cartNumber={cartNumber} priceAfterDiscount={priceAfterDiscount} totalCartPrice={totalCartPrice} />
                 </Col>
             </Row>
         </Container>

@@ -31,8 +31,15 @@ import UserEditAdderss from './Components/User/UserEditAdderss';
 import AdminEditPage from './Components/Admin/AdminEditPage';
 import AdminAddCoupon from './Components/Admin/AdminAddCoupon';
 import AdminEditCoupon from './Components/Admin/AdminEditCoupon';
+import ProductCategory from './Components/ProductDetails/ProductCategory';
+import ProductBrand from './Components/ProductDetails/ProductBrand';
+import ProtectedRouteHook from './hook/Auth/protected-route-hook';
+import ProtectedRoute from './Components/uttilies/ProtectedRoute';
 
 function App() {
+
+  const [userData, isUser, isAdmin] = ProtectedRouteHook();
+
 
 
   return (
@@ -48,28 +55,35 @@ function App() {
           <Route path="/allbrand" element={<AllBrand />} />
           <Route path="/products" element={<ProductsShop />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/products/category/:id" element={<ProductCategory />} />
+          <Route path="/products/brand/:id" element={<ProductBrand />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/order/paymethoud" element={<PaymentPage />} />
-          <Route path="admin/*" element={<AdminPage />} >
-            <Route index element={<AdminAllProductsItems />} />
-            <Route path="allorders" element={<AdminAllOrdersCom />} />
-            <Route path="addbrand" element={<AdminAddBrandCom />} />
-            <Route path="addcategory" element={<AdminAddCategoriyCom />} />
-            <Route path="addsubcategory" element={<AdminAddSubCategoriyCom />} />
-            <Route path="addproduct" element={<AdminAddProductCom />} />
-            <Route path="addcoupon" element={<AdminAddCoupon />} />
-            <Route path="editcoupon/:id" element={<AdminEditCoupon />} />
-            <Route path="order/23" element={<AdminOrderDetails />} />
-            <Route path="editProduct/:id" element={<AdminEditPage />} />
-
+          <Route path="/order/paymethoud" element={<ProtectedRoute auth={isUser}>
+            <PaymentPage />
+          </ProtectedRoute>} />
+          <Route element={<ProtectedRoute auth={isAdmin}/>}>
+            <Route path="admin/*" element={<AdminPage />} >
+              <Route index element={<AdminAllProductsItems />} />
+              <Route path="allorders" element={<AdminAllOrdersCom />} />
+              <Route path="addbrand" element={<AdminAddBrandCom />} />
+              <Route path="addcategory" element={<AdminAddCategoriyCom />} />
+              <Route path="addsubcategory" element={<AdminAddSubCategoriyCom />} />
+              <Route path="addproduct" element={<AdminAddProductCom />} />
+              <Route path="addcoupon" element={<AdminAddCoupon />} />
+              <Route path="editcoupon/:id" element={<AdminEditCoupon />} />
+              <Route path="order/:id" element={<AdminOrderDetails />} />
+              <Route path="editProduct/:id" element={<AdminEditPage />} />
+            </Route>
           </Route>
-          <Route path='user/*' element={<UserPage />} >
-            <Route index element={<UserAllProductCom />} />
-            <Route path="favorite" element={<UserFavorite />} />
-            <Route path="addresses" element={<UserAdresses />} />
-            <Route path="profile" element={<UserProfile />} />
-            <Route path="add-address" element={<UserAddAddress />} />
-            <Route path="edit-address/:id" element={<UserEditAdderss />} />
+          <Route element={<ProtectedRoute auth={isUser} />}>
+            <Route path='user/*' element={<UserPage />} >
+              <Route index element={<UserAllProductCom />} />
+              <Route path="favorite" element={<UserFavorite />} />
+              <Route path="addresses" element={<UserAdresses />} />
+              <Route path="profile" element={<UserProfile />} />
+              <Route path="add-address" element={<UserAddAddress />} />
+              <Route path="edit-address/:id" element={<UserEditAdderss />} />
+            </Route>
           </Route>
         </Routes>
         <Footer />

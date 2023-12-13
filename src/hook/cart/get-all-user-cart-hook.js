@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import notify from "../useNotification";
 import { getAllCart } from "../../redux/actions/cartAction";
 const GetAllUserCartHook = () => {
     const dispatch = useDispatch();
@@ -10,6 +9,7 @@ const GetAllUserCartHook = () => {
     const [totalCartPrice, setTotalCartPrice]=useState(0)
     const [priceAfterDiscount, setPriceAfterDiscount] = useState(0)
     const [couponName, setCouponName] = useState("");
+    const [cartID, setCartID]=useState("0")
 
 
     useEffect(() => {
@@ -30,6 +30,7 @@ const GetAllUserCartHook = () => {
                     setAllCart(allCartRes.data.products)
                     setCartNumber(allCartRes.numOfCartItems)
                     setTotalCartPrice(allCartRes.data.totalCartPrice)
+                    setCartID(allCartRes.data._id)
                 } 
                 if (allCartRes.data.coupon) {
                     setCouponName(allCartRes.data.coupon)
@@ -44,6 +45,7 @@ const GetAllUserCartHook = () => {
             }else {
                 setAllCart([])
                 setCartNumber(0)
+                setCartID("0")
             }
         }
     }, [loading])
@@ -51,7 +53,7 @@ const GetAllUserCartHook = () => {
     
     
 
-    return [allCart, cartNumber, couponName, totalCartPrice, priceAfterDiscount]
+    return [allCart, cartNumber, couponName, totalCartPrice, priceAfterDiscount, cartID]
 }
 
 export default GetAllUserCartHook

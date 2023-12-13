@@ -2,7 +2,7 @@ import useDeleteData from "../../hooks/useDelete";
 import  { useEdittDataImage } from "../../hooks/useEdit";
 import {useGetData} from "../../hooks/useGetData";
 import { useInsertDataImage } from "../../hooks/useInsertData";
-import { CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, GET_ALL_PRODUCTS, GET_ERROR, GET_SIMILER_PRODUCTS, GET_ONE_PRODUCTS, GET_PRODUCT_LIKE } from "../type";
+import { CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, GET_ALL_PRODUCTS_BRAND ,GET_ALL_PRODUCTS, GET_ALL_PRODUCTS_CATEGORY, GET_ERROR, GET_SIMILER_PRODUCTS, GET_ONE_PRODUCTS, GET_PRODUCT_LIKE } from "../type";
 
 
 // funciton to create a product
@@ -156,6 +156,42 @@ export const getProductLike = (id) => async (dispatch) => {
         dispatch({
             type: GET_ERROR,
             payload: "Error " + e,
+        })
+    }
+}
+
+//get all products by category
+export const getAllProductsByCategory = (categoryID, limit, page) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/products?limit=${limit}&category=${categoryID}&page=${page}`);
+        dispatch({
+            type: GET_ALL_PRODUCTS_CATEGORY,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: GET_ALL_PRODUCTS_CATEGORY,
+            payload: e.response,
+        })
+    }
+}
+
+//get all products by category
+export const getAllProductsByBrand = (BrandID, limit, page) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/products?limit=${limit}&brand=${BrandID}&page=${page}`);
+        dispatch({
+            type: GET_ALL_PRODUCTS_BRAND,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: GET_ALL_PRODUCTS_BRAND,
+            payload: e.response,
         })
     }
 }

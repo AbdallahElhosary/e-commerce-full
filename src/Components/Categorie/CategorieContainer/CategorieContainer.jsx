@@ -15,7 +15,7 @@ const CategorieContainer = ({data,loading}) => {
                         data ? (
                             data.map((item, index) => {
                                 return (
-                                    <CategorieCard key={index} title={item.name} background={colors[Math.floor(Math.random() * 5) + 1]} img={item.image} />
+                                    <CategorieCard key={index} background={colors[Math.floor(Math.random() * 5) + 1]} category={item} />
                                 )
                         })
                     ) : (<h4>There Is no Categories</h4>)

@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 const UserAddressCard = ({ add }) => {
   const navigate = useNavigate();
 
-  const [res, onDeleteAddress, show, handleClose, handleShow] = GetAddressHook(add);
+  const [address, onDeleteAddress, show, handleClose, handleShow] = GetAddressHook(add);
   return (
     <div className="user-address-card my-3 p-2">
       <Modal show={show} onHide={handleClose}>

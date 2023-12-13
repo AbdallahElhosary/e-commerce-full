@@ -3,10 +3,13 @@ import notify from "../useNotification";
 import { useState } from "react";
 import { applyCouponCart } from "../../redux/actions/cartAction";
 import { useEffect } from "react";
-const ApplyCouponCartHook = () => {
+import { useNavigate } from "react-router-dom";
+const ApplyCouponCartHook = (cartItems) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(true);
     const [couponName, setCouponName] = useState("");
+
     
     const onChangeCouponName = (value) => {
         setCouponName(value)
@@ -44,8 +47,19 @@ const ApplyCouponCartHook = () => {
             }
         }
     }, [loading])
+
+    const handelCheckout = () => {
+        if (cartItems.length >= 1) {
+            navigate('/order/paymethoud')
+        }
+        else {
+            notify("Please add products to cart", "warn")
+        }
+    }
+
+
     
-    return [couponName , onChangeCouponName , onApplyCoupon]
+    return [couponName, onChangeCouponName, onApplyCoupon, handelCheckout]
 }
 
 export default ApplyCouponCartHook

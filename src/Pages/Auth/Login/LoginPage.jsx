@@ -43,10 +43,6 @@ const LoginPage = () => {
           <div className='w-100 text-center py-1'>Have No Account ? <Link to="/register">Register</Link> </div>
         </Form>
       </Row>
-      <Row className='text-center'>
-        <div className='py-1'><Link to="/admin">Admin Login</Link></div>
-        <div className='py-1'><Link to="/user">User Login</Link></div>
-      </Row>
       <ToastContainer />
     </Container>
 

@@ -29,7 +29,7 @@ const AdminPage = () => {
                         <Route path="/addproduct" element={<AdminAddProductCom />} />
                         <Route path="/addcoupon" element={<AdminAddCoupon />} />
                         <Route path="/editcoupon/:id" element={<AdminEditCoupon />} />
-                        <Route path="/order/23" element={<AdminOrderDetails />} />
+                        <Route path="/order/:id" element={<AdminOrderDetails />} />
                         <Route path="/editProduct/:id" element={<AdminEditPage />} />
                     </Routes>
                 </Col>

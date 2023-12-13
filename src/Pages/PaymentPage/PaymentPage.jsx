@@ -1,37 +1,51 @@
 import React from 'react'
 import "./PaymentPage.scss";
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Col, Container, Form } from 'react-bootstrap'
+import GetAddressHook from '../../hook/address/get-address-hook';
+import OrderPayCashHook from '../../hook/checkout/order-pay-cash-hook';
+import { ToastContainer } from 'react-toastify';
 
 const PaymentPage = () => {
-    return (
-        <Container>
-            <h4 className="pt-5">Choose the payment method</h4>
-            <div className="my-3 px-3">
-                <Row className="d-flex justify-content-between  align-items-center">
-                    <Col md="6" xs="12">
-                        <div className="wrapper">
-                            <input type="radio" name="select" id="option-1" checked />
-                            <input type="radio" name="select" id="option-2" />
-                            <label for="option-1" className="option option-1">
-                                <div className="dot"></div>
-                                <span>Pay by credit card</span>
-                            </label>
-                            <label for="option-2" className="option option-2">
-                                <div className="dot"></div>
-                                <span>Pay when recieving</span>
-                            </label>
-                        </div>
-                    </Col>
-                </Row>
+    const [address, onDeleteAddress, show, handleClose, handleShow] = GetAddressHook();
 
-            </div>
+    const [handleChooseAddress, addressDetails, handleCreateCashOrder] = OrderPayCashHook();
+
+    
+    return (
+        <Container className='PaymentPage'>
+            <div className="admin-content-text pt-5">Choose Payment</div>
+            <Form>
+                <div className='form-check-dev'>
+                    <input type="radio" id="card" name="fav_language" value="Paying by credit card" />
+                    <label htmlFor="card">Paying by credit card</label>
+                </div>
+                <div className='form-check-dev'>
+                    <input type="radio" id="delivery" name="fav_language" value="Cash on delivery" />
+                    <label htmlFor="delivery">Cash on delivery</label>
+                    
+                    
+                </div>
+                {
+                    address.data && <select name="address" id="address" className="select select-address px-2 " onChange={handleChooseAddress}>
+                        <option value="0">Select Address</option>
+                        {address.data.map((add) => {
+                            return (
+                                <option key={add._id} value={add._id}>{add.alias}</option>
+                            )
+                        })}
+                    </select>
+                }
+            </Form>
+
 
             <Row>
-                <Col xs="12" className="d-flex">
-                    <div className="product-cart-add px-3 pt-2 me-2">Buy</div>
-                    <div className="product-price  border">34000 EGP</div>
+                <Col xs="12" className="d-flex flex-column gap-2">
+                    <div className="product-price d-inline border">34000EGP</div>
+                    <div className="product-cart-add px-3 pt-2 d-inline me-2" onClick={handleCreateCashOrder}>Buy</div>
                 </Col>
             </Row>
+
+            <ToastContainer />
         </Container>
     )
 }

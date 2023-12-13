@@ -5,10 +5,10 @@ import DeleteCartHook from '../../../hook/cart/delete-cart-hook'
 import ApplyCouponCartHook from '../../../hook/cart/apply-coupon-cart-hook'
 import { ToastContainer } from 'react-toastify'
 import { useEffect } from 'react'
-const CartCheckout = ({ couponNameRes, priceAfterDiscount, totalCartPrice }) => {
+const CartCheckout = ({ couponNameRes, cartItems, cartNumber, priceAfterDiscount, totalCartPrice }) => {
     const navigate = useNavigate();
     const [show, handleClose, handleShow, , onDeleteAllCart] = DeleteCartHook();
-    const [couponName, onChangeCouponName, onApplyCoupon] = ApplyCouponCartHook();
+    const [couponName, onChangeCouponName, onApplyCoupon, handelCheckout] = ApplyCouponCartHook(cartItems);
 
     useEffect(() => {
         if (couponNameRes) {
@@ -50,8 +50,14 @@ const CartCheckout = ({ couponNameRes, priceAfterDiscount, totalCartPrice }) => 
                                 `${totalCartPrice}EGP`
                         }
                     </div>
-                        <button className="btn btn-dark px-2 my-2" onClick={() => navigate("/order/paymethoud")}>Buy</button>
-                        <button className="btn btn-dark px-2 my-2" onClick={handleShow}> Clear Cart</button> 
+                    {
+                        cartNumber > 0 && <button className="btn btn-dark px-2 my-2" onClick={handelCheckout}>Buy</button>
+                        
+                    }
+                    {
+                        cartNumber > 0 && <button className="btn btn-dark px-2 my-2" onClick={handleShow}> Clear Cart</button> 
+                    }
+                        
                     
                 </Col>
             </Row>
