@@ -21,7 +21,6 @@ const ProductsShop = () => {
         <div style={{ minHeight: "50vh" }}>
             <Container>
                 <FilterCount products={items} getProduct={getProduct} />
-
                 <Row>
                     <Col sm="2" xs="3" md='2'>
                         <SideBar />
@@ -30,7 +29,6 @@ const ProductsShop = () => {
                         <CardProductsCon products={items} />
                     </Col>
                 </Row>
-
                 {
                     pageCount > 1 ? (
                         <Paginate pageCount={pageCount} onPress={onPress} />

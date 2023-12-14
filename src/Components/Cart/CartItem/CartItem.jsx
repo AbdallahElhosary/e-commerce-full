@@ -23,11 +23,11 @@ const CartItem = ({ cartItem }) => {
                 </Modal.Footer>
             </Modal>
             <Col xs="12" className="cart-item-body my-2 d-flex px-2 ">
-                <img style={{width:"200px" , height:"180px"}} className='mx-1' src={`http://127.0.0.1:8000/products/${cartItem.product.imageCover}`} alt="" />
+                <img style={{ width: "200px", height: "180px" }} className='mx-1' src={`http://127.0.0.1:8000/products/${cartItem.product.imageCover}`} alt="" />
                 <div className="w-100">
                     <Row className="justify-content-between">
                         <Col sm="12" className=" d-flex flex-row justify-content-between">
-                            <div className="d-inline pt-2 cat-text">{cartItem.product.category.name}</div>
+                            <div className="d-inline pt-2 cat-text">{cartItem?.product?.category?.name}</div>
                             <div className="d-flex pt-2 align-items-center" style={{ cursor: "pointer" }} onClick={handleShow}>
                                 <MdDelete />
                                 <div className="cat-text d-inline me-2 fs-6 mx-1" >Delete</div>
@@ -53,7 +53,7 @@ const CartItem = ({ cartItem }) => {
                     <Row>
                         <Col sm="12" className="mt-1">
                             <div className="cat-text d-inline">The Brand :</div>
-                            <div className="d-inline mx-1">{cartItem.product.brand.name}</div>
+                            <div className="d-inline mx-1">{cartItem?.product?.brand?.name}</div>
                         </Col>
                     </Row>
                     <Row>
@@ -83,7 +83,7 @@ const CartItem = ({ cartItem }) => {
                 </div>
             </Col>
         </>
-        
+
     )
 }
 

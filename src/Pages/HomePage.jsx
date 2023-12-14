@@ -15,7 +15,7 @@ const HomePage = () => {
         <div>
             <Slider />
             <HomeCategorie />
-            <CardProductsCon title="Best Seller" btnTitle="More" products={products.slice(0, 4)}  />
+            <CardProductsCon title="Best Seller" btnTitle="More" products={products?.slice(0, 4)}  />
             <DiscountBanner />
             <CardProductsCon title="Latest Fashion" btnTitle="More" products={products.slice(0, 4)} />
             <BrandFeatured title="Brand Featured" btnTitle="More" />

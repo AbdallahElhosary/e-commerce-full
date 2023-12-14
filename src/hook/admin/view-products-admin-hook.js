@@ -16,6 +16,7 @@ const ViewProductAdminHook = () => {
     let items = []; let pagination = [];
     const allProducts = useSelector((state) => state.allProduct.allProducts);
 
+
     try {
 
         if (allProducts.data)

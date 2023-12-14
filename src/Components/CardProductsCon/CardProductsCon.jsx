@@ -17,7 +17,6 @@ const CardProductsCon = ({ btnTitle, title, pathText, products }) => {
                         products.map((item, index) => <ProductCard key={index} item={item} wishList={wishList} />)
                     ) : <Spinner animation="border" variant="primary" /> 
                     }
-
             </Row>
         </Container>
     )

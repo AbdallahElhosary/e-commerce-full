@@ -5,7 +5,7 @@ import {  getAllProductsSearch } from "../../redux/actions/productAction";
 const ViewSearchProductHook = () => {
   let limit = 8;
   const dispatch = useDispatch();
-  let word = "", queryCat = "", queryBra = "", sortWord = "", sortType, priceFrom = "", priceTo = "", priceFromStr = "", priceToStr = ""
+  let word = "", queryCat = "", queryBra = "", sortWord = "", sortType ="createdAt", priceFrom = "", priceTo = "", priceFromStr = "", priceToStr = ""
   
   const getProduct = async () => {
     getStorge();

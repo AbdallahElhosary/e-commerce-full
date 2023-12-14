@@ -27,10 +27,11 @@ const GetAllUserCartHook = () => {
         if (loading === false) {
             if (allCartRes) {
                 if (allCartRes.status === "success") {
-                    setAllCart(allCartRes.data.products)
-                    setCartNumber(allCartRes.numOfCartItems)
-                    setTotalCartPrice(allCartRes.data.totalCartPrice)
-                    setCartID(allCartRes.data._id)
+                    // console.log(allCart)
+                    setAllCart(allCartRes?.data?.products)
+                    setCartNumber(allCartRes?.numOfCartItems)
+                    setTotalCartPrice(allCartRes?.data.totalCartPrice)
+                    setCartID(allCartRes?.data?._id)
                 } 
                 if (allCartRes.data.coupon) {
                     setCouponName(allCartRes.data.coupon)
